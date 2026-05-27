@@ -205,3 +205,28 @@
 
 ### Скріншоти:
 ![](image/image-13.png)
+
+## Chapter 10 — Adding Search and Pagination
+
+### Що зробив:
+- Оновив `/app/dashboard/invoices/page.tsx` — додав `searchParams` prop
+- Оновив `/app/ui/search.tsx` — додав `useSearchParams`, `usePathname`, `useRouter`
+- Встановив `use-debounce` і застосував `useDebouncedCallback` з затримкою 300ms
+- Пошук оновлює URL без перезавантаження сторінки
+- `<Table />` отримує `query` і `currentPage` з URL
+
+### Ключові концепції:
+- URL search params — зберігають стан пошуку в URL (bookmarkable, shareable)
+- `useSearchParams` — хук для читання URL params на клієнті
+- `usePathname` — хук для отримання поточного шляху
+- `useRouter.replace` — оновлює URL без перезавантаження
+- Debouncing — затримка виконання функції, зменшує кількість запитів до БД
+- `defaultValue` vs `value` — використовуємо `defaultValue` бо стан в URL, не в React state
+
+### Нотатки:
+- Client компоненти використовують хуки для читання params
+- Server компоненти отримують params через props від page
+- Без debouncing — запит до БД на кожен символ, з debouncing — тільки після зупинки
+
+### Скріншоти:
+![](image/image-14.png)
