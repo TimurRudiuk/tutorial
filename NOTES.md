@@ -68,3 +68,27 @@
 
 ### Скріншоти:
 ![](image/image-04.png)
+
+## Chapter 4 — Creating Layouts and Pages
+
+### Що зробив:
+- Створив `/app/dashboard/page.tsx` — сторінка `/dashboard`
+- Створив `/app/dashboard/customers/page.tsx` — сторінка `/dashboard/customers`
+- Створив `/app/dashboard/invoices/page.tsx` — сторінка `/dashboard/invoices`
+- Створив `/app/dashboard/layout.tsx` з компонентом `<SideNav />`
+
+### Ключові концепції:
+- File-system routing — папки визначають роути, `page.tsx` робить роут доступним
+- `layout.tsx` — спільний UI для кількох сторінок
+- Partial rendering — при навігації оновлюється тільки `page.tsx`, layout не ре-рендериться
+- Colocation — UI компоненти, тести і код можна тримати поряд з роутами
+- Root layout (`/app/layout.tsx`) — обов'язковий, застосовується до всіх сторінок
+
+### Нотатки:
+- Зручно що layout автоматично огортає всі дочірні сторінки через `children`
+- Partial rendering зберігає React state при переходах між сторінками
+
+### Скріншоти:
+![](image/image-05.png)
+![](image/image-06.png)
+![](image/image-07.png)
