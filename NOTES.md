@@ -43,28 +43,5 @@
 - Tailwind зручніший для швидкої розробки, але CSS Modules краще для ізоляції стилів
 - `clsx` вирішує проблему умовних класів без шаблонних рядків
 
-### Скріншоти:
-![](image/image-03.png)
-
-## Chapter 3 — Optimizing Fonts and Images
-
-### Що зробив:
-- Створив `/app/ui/fonts.ts` з шрифтами Inter (основний) і Lusitana (додатковий)
-- Додав Inter до `<body>` в `layout.tsx` з класом `antialiased`
-- Застосував Lusitana до `<p>` елемента в `page.tsx`
-- Розкоментував компонент `<AcmeLogo />`
-- Додав desktop hero image через `next/image` (прихований на мобільних)
-- Додав mobile hero image (прихований на десктопі)
-
-### Ключові концепції:
-- `next/font` завантажує шрифти під час білду — без додаткових мережевих запитів
-- Cumulative Layout Shift (CLS) — метрика Google для оцінки стабільності верстки
-- `next/image` автоматично: lazy loading, resize, WebP формат, запобігає layout shift
-- `width` і `height` в `<Image>` — розміри оригінального файлу для aspect ratio
-
-### Нотатки:
-- Next.js хостить шрифти разом зі статичними файлами — розумне рішення для продуктивності
-- `hidden md:block` і `block md:hidden` — зручний Tailwind патерн для responsive зображень
-
-### Скріншоти:
-![](image/image-04.png)
+### Screenshots:
+![Styled home page](image/image-03.png)
