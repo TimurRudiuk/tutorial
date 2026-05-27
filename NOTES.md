@@ -158,3 +158,24 @@
 
 ### Скріншоти:
 ![](image/image-11.png)
+
+## Chapter 8 — Static and Dynamic Rendering
+
+### Що зробив:
+- Розкоментував `console.log` і `setTimeout` в `fetchRevenue()` для симуляції повільного запиту
+- Переконався що сторінка завантажується 3 секунди
+- Побачив логи в консолі браузера: `Fetching revenue data...` і `Data fetch completed after 3 seconds.`
+
+### Ключові концепції:
+- Static rendering — рендер на сервері під час білду, результат кешується
+- Dynamic rendering — рендер на сервері при кожному запиті користувача
+- Static rendering підходить для незмінного контенту (блог, продуктова сторінка)
+- Dynamic rendering підходить для персоналізованих даних (дашборд, профіль)
+- Проблема dynamic rendering: додаток такий же повільний як найповільніший запит
+
+### Нотатки:
+- Cookies і URL search params доступні тільки під час request time — тільки dynamic rendering
+- Весь дашборд блокується поки `fetchRevenue` не завершиться — це проблема
+
+### Скріншоти:
+![](image/image-12.png)
