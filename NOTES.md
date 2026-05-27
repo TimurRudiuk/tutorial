@@ -179,3 +179,29 @@
 
 ### Скріншоти:
 ![](image/image-12.png)
+
+## Chapter 9 — Streaming
+
+### Що зробив:
+- Створив `/app/dashboard/loading.tsx` з `<DashboardSkeleton />`
+- Створив папку `/(overview)` і перемістив туди `page.tsx` і `loading.tsx`
+- Обернув `<RevenueChart />`, `<LatestInvoices />`, `<CardWrapper />` в `<Suspense>`
+- Перемістив fetch функції в самі компоненти
+- `revenue-chart.tsx` — сам фетчить `fetchRevenue()`
+- `latest-invoices.tsx` — сам фетчить `fetchLatestInvoices()`
+- `cards.tsx` — `CardWrapper` сам фетчить `fetchCardData()`
+
+### Ключові концепції:
+- Streaming — розбиває сторінку на chunks, кожен стримується окремо
+- `loading.tsx` — спеціальний файл Next.js, автоматично створює `<Suspense>`
+- `<Suspense>` — показує fallback поки компонент завантажує дані
+- Route Groups `/(overview)` — групування файлів без впливу на URL
+- Skeleton — спрощений UI як placeholder під час завантаження
+
+### Нотатки:
+- Раніше вся сторінка чекала 3 секунди через `fetchRevenue`
+- Тепер картки і Latest Invoices видні одразу, тільки графік чекає
+- Переміщення fetch в компоненти — хороша практика для granular streaming
+
+### Скріншоти:
+![](image/image-13.png)
