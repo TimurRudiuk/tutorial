@@ -261,3 +261,31 @@
 ![](image/image-15.png)
 ![](image/image-16.png)
 ![](image/image-17.png)
+
+## Chapter 12 — Handling Errors
+
+### Що зробив:
+- Додав `try/catch` в Server Actions: `createInvoice`, `updateInvoice`, `deleteInvoice`
+- Створив `/dashboard/invoices/error.tsx` — catch-all для непійманих помилок
+- Додав `notFound()` в edit page коли інвойс не існує
+- Створив `/dashboard/invoices/[id]/edit/not-found.tsx` — UI для 404
+
+### Ключові концепції:
+- `try/catch` в Server Actions — перехоплює помилки БД і повертає повідомлення
+- `redirect` викликається ПОЗА `try/catch` — бо redirect кидає помилку всередині, яку catch перехопить
+- `error.tsx` — спеціальний файл Next.js, catch-all для непійманих виключень у route segment
+- `'use client'` — error.tsx обов'язково Client Component (використовує `useEffect`, `onClick`)
+- `error` prop — екземпляр JavaScript Error об'єкта
+- `reset` prop — функція що пробує перерендерити route segment
+- `notFound()` — функція з `next/navigation`, показує 404 UI
+- `not-found.tsx` — файл що рендериться коли викликається `notFound()`
+- `notFound` має пріоритет над `error.tsx` для більш специфічних помилок
+
+### Нотатки:
+- `error.tsx` ловить все що не піймано — універсальний fallback
+- `not-found.tsx` — більш специфічний, для ресурсів яких не існує
+- Помилки БД краще логувати на сервері, а користувачу показувати загальне повідомлення
+
+### Скріншоти:
+![](image/image-18.png)
+![](image/image-19.png)
