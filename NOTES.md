@@ -136,3 +136,25 @@
 ### Скріншоти:
 ![](image/image-09.png)
 ![](image/image-10.png)
+
+## Chapter 7 — Fetching Data
+
+### Що зробив:
+- Додав `fetchRevenue`, `fetchLatestInvoices`, `fetchCardData` в `dashboard/page.tsx`
+- Розкоментував компоненти `<RevenueChart />` і `<LatestInvoices />`
+- Розкоментував код в `revenue-chart.tsx` і `latest-invoices.tsx`
+- Dashboard тепер показує реальні дані з бази
+
+### Ключові концепції:
+- Server Components дозволяють робити `async/await` без `useEffect`
+- Можна звертатись до бази напряму без API layer
+- Request waterfall — запити виконуються послідовно, кожен чекає попереднього
+- `Promise.all()` — паралельне виконання запитів, швидше за waterfall
+- SQL краще за JS для фільтрації — менше даних передається по мережі
+
+### Нотатки:
+- Waterfall не завжди погано — іноді потрібно чекати результат попереднього запиту
+- `fetchCardData` використовує `Promise.all()` — всі три запити виконуються паралельно
+
+### Скріншоти:
+![](image/image-11.png)
