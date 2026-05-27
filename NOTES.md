@@ -321,3 +321,40 @@
 
 ### Скріншоти:
 ![](image/image-20.png)
+
+## Chapter 14 — Adding Authentication
+
+### Що зробив:
+- Встановив `next-auth@beta`
+- Згенерував `AUTH_SECRET` і додав в `.env`
+- Створив `/auth.config.ts` з `authorized` callback для захисту роутів
+- Створив `/proxy.ts` — NextAuth Proxy для перевірки сесії до рендеру сторінки
+- Створив `/auth.ts` з `Credentials` провайдером, `getUser`, `bcrypt.compare`
+- Створив `/app/login/page.tsx` з `LoginForm`
+- Додав `authenticate` action в `actions.ts`
+- Оновив `login-form.tsx` — підключив `useActionState(authenticate)`
+- Оновив `sidenav.tsx` — додав `signOut` форму
+
+### Ключові концепції:
+- Authentication — перевірка хто ти є (логін/пароль)
+- Authorization — що тобі дозволено робити (доступ до сторінок)
+- NextAuth.js — бібліотека що спрощує auth в Next.js
+- `AUTH_SECRET` — ключ для шифрування cookies сесії
+- `auth.config.ts` — конфіг NextAuth без Node.js залежностей (для Proxy)
+- `auth.ts` — повний NextAuth з bcrypt (тільки для сервера)
+- Proxy — перехоплює запити ДО рендеру, перевіряє сесію
+- `authorized` callback — повертає `true/false` або `Response.redirect`
+- `Credentials` provider — логін через email/пароль
+- `bcrypt.compare` — порівнює введений пароль з хешем в БД
+- `safeParse` (Zod) — валідує email і пароль перед запитом до БД
+- `useActionState(authenticate, undefined)` — повертає `[errorMessage, formAction, isPending]`
+- `isPending` — стан очікування під час сабміту форми
+
+### Нотатки:
+- `auth.config.ts` окремо від `auth.ts` — бо bcrypt не працює в Proxy (Edge Runtime)
+- `signOut({ redirectTo: '/' })` — виходить і редіректить на головну
+- Тестові дані: `user@nextmail.com` / `123456`
+
+### Скріншоти:
+![](image/image-21.png)
+![](image/image-22.png)
