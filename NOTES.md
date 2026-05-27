@@ -230,3 +230,34 @@
 
 ### Скріншоти:
 ![](image/image-14.png)
+
+## Chapter 11 — Mutating Data
+
+### Що зробив:
+- Створив `/app/lib/actions.ts` з Server Actions: `createInvoice`, `updateInvoice`, `deleteInvoice`
+- Створив сторінку `/dashboard/invoices/create/page.tsx`
+- Створив динамічний роут `/dashboard/invoices/[id]/edit/page.tsx`
+- Підключив `createInvoice` до форми створення
+- Підключив `updateInvoice` через `.bind()` до форми редагування
+- Підключив `deleteInvoice` до кнопки видалення
+
+### Ключові концепції:
+- Server Actions — асинхронні функції що виконуються на сервері, не потребують API endpoints
+- `'use server'` — директива що позначає функції як Server Actions
+- Zod — бібліотека для валідації типів даних з форми
+- `z.coerce.number()` — конвертує рядок в число (бо `input type="number"` повертає string)
+- Суми зберігаються в центах щоб уникнути floating-point помилок
+- `revalidatePath` — очищає кеш роуту після мутації
+- `redirect` — перенаправляє користувача після успішної дії
+- `.bind(null, id)` — передає id в Server Action без hidden input
+- Dynamic route `[id]` — папка в квадратних дужках створює динамічний сегмент
+
+### Нотатки:
+- Server Actions автоматично створюють POST endpoint — не потрібно писати API вручну
+- Progressive Enhancement — форми працюють навіть без JavaScript
+- UUID безпечніші за auto-increment ID бо не дозволяють перебирати записи
+
+### Скріншоти:
+![](image/image-15.png)
+![](image/image-16.png)
+![](image/image-17.png)
