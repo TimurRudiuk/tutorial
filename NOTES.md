@@ -358,3 +358,28 @@
 ### Скріншоти:
 ![](image/image-21.png)
 ![](image/image-22.png)
+
+## Chapter 15 — Adding Metadata
+
+### Що зробив:
+- Перемістив `favicon.ico` і `opengraph-image.jpg` з `/public` в `/app`
+- Додав `metadata` об'єкт з `title.template` в root layout
+- Додав `metadata` з title в кожну сторінку: login, dashboard, customers, invoices, create, edit
+
+### Ключові концепції:
+- Metadata — прихована інформація в `<head>` для SEO і соцмереж
+- Config-based metadata — експорт `metadata` об'єкта з `layout.tsx` або `page.tsx`
+- File-based metadata — `favicon.ico`, `opengraph-image.jpg` в `/app` підхоплюються автоматично
+- `title.template: '%s | Acme Dashboard'` — шаблон, `%s` замінюється на назву сторінки
+- `title.default` — використовується якщо сторінка не має свого title
+- `metadataBase` — базовий URL для абсолютних посилань в metadata
+- Metadata в дочірній сторінці перевизначає metadata з layout
+- Open Graph — metadata для красивого відображення при шеарингу в соцмережах
+
+### Нотатки:
+- `favicon.ico` в `/app` — Next.js підхоплює автоматично, не потрібен `<link>` тег
+- `opengraph-image.jpg` в `/app` — автоматично стає OG image для всього сайту
+- Можна генерувати OG images динамічно через `ImageResponse`
+
+### Скріншоти:
+![](image/image-23.png)
