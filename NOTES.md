@@ -2,47 +2,69 @@
 
 ## Chapter 1 — Getting Started
 
-### What I did:
-- Installed pnpm globally via npm
-- Created Next.js project using `create-next-app` with the starter example
-- Ran `pnpm approve-builds` to allow build scripts for `bcrypt` and `sharp`
-- Installed dependencies with `pnpm i`
-- Started dev server with `pnpm dev`
-- Opened `http://localhost:3000` — unstyled home page appeared
+### Що зробив:
+- Встановив pnpm глобально через npm
+- Створив Next.js проєкт через `create-next-app` зі starter example
+- Запустив `pnpm approve-builds` щоб дозволити build scripts для `bcrypt` і `sharp`
+- Встановив залежності через `pnpm i`
+- Запустив dev сервер через `pnpm dev`
+- Відкрив `http://localhost:3000` — з'явилась unstyled сторінка
 
-### Project structure:
-- `/app` — routes, components, logic
-- `/app/lib` — utility functions, data fetching, placeholder data
-- `/app/ui` — pre-styled UI components
-- `/public` — static assets
+### Структура проєкту:
+- `/app` — роути, компоненти, логіка
+- `/app/lib` — утиліти, функції для fetching даних, placeholder data
+- `/app/ui` — UI компоненти
+- `/public` — статичні файли
 
-### Notes & thoughts:
-- The project uses TypeScript (`.ts`, `.tsx`) — types are manually defined in `definitions.ts`
-- Placeholder data in `placeholder-data.ts` simulates a real database
-- pnpm is faster than npm/yarn and is recommended for this course
+### Нотатки:
+- Проєкт написаний на TypeScript — типи визначені вручну в `definitions.ts`
+- Placeholder data в `placeholder-data.ts` імітує реальну базу даних
+- pnpm швидший за npm/yarn
 
-### Screenshots:
-![](image/image-01.png) 
-![](image/image-02.png) 
+### Скріншоти:
+![](image/image-01.png)
+![](image/image-02.png)
 
 ## Chapter 2 — CSS Styling
 
-### What I did:
-- Added `import '@/app/ui/global.css'` to `/app/layout.tsx`
-- Tested Tailwind by adding a black triangle div to `page.tsx`
-- Created `/app/ui/home.module.css` with `.shape` class
-- Replaced Tailwind triangle with CSS Module version
-- Both approaches produce the same result
+### Що зробив:
+- Додав `import '@/app/ui/global.css'` в `/app/layout.tsx`
+- Протестував Tailwind — додав чорний трикутник в `page.tsx`
+- Створив `/app/ui/home.module.css` з класом `.shape`
+- Замінив Tailwind трикутник на CSS Module версію
 
-### Key concepts:
-- `global.css` with `@tailwind` directives applies styles globally
-- Tailwind — utility classes directly in JSX (`className="text-blue-500"`)
-- CSS Modules — scoped styles, no class name conflicts
-- `clsx` — conditionally toggle class names based on state
+### Ключові концепції:
+- `global.css` з `@tailwind` директивами застосовує стилі глобально
+- Tailwind — utility класи прямо в JSX (`className="text-blue-500"`)
+- CSS Modules — scoped стилі, без конфліктів класів
+- `clsx` — умовне перемикання класів залежно від стану
 
-### Questions & thoughts:
-- Tailwind є зручнішим для швидкої розробки, але CSS Modules краще для ізоляції стилів
+### Нотатки:
+- Tailwind зручніший для швидкої розробки, але CSS Modules краще для ізоляції стилів
 - `clsx` вирішує проблему умовних класів без шаблонних рядків
 
-### Screenshots:
-![Styled home page](image/image-03.png)
+### Скріншоти:
+![](image/image-03.png)
+
+## Chapter 3 — Optimizing Fonts and Images
+
+### Що зробив:
+- Створив `/app/ui/fonts.ts` з шрифтами Inter (основний) і Lusitana (додатковий)
+- Додав Inter до `<body>` в `layout.tsx` з класом `antialiased`
+- Застосував Lusitana до `<p>` елемента в `page.tsx`
+- Розкоментував компонент `<AcmeLogo />`
+- Додав desktop hero image через `next/image` (прихований на мобільних)
+- Додав mobile hero image (прихований на десктопі)
+
+### Ключові концепції:
+- `next/font` завантажує шрифти під час білду — без додаткових мережевих запитів
+- Cumulative Layout Shift (CLS) — метрика Google для оцінки стабільності верстки
+- `next/image` автоматично: lazy loading, resize, WebP формат, запобігає layout shift
+- `width` і `height` в `<Image>` — розміри оригінального файлу для aspect ratio
+
+### Нотатки:
+- Next.js хостить шрифти разом зі статичними файлами — розумне рішення для продуктивності
+- `hidden md:block` і `block md:hidden` — зручний Tailwind патерн для responsive зображень
+
+### Скріншоти:
+![](image/image-04.png)
