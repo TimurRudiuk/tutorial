@@ -289,3 +289,35 @@
 ### Скріншоти:
 ![](image/image-18.png)
 ![](image/image-19.png)
+
+## Chapter 13 — Improving Accessibility
+
+### Що зробив:
+- Встановив `eslint` + `eslint-config-next`, створив `eslint.config.mjs`
+- Додав скрипт `"lint": "eslint ."` в `package.json`
+- Оновив `FormSchema` в `actions.ts` — додав кастомні повідомлення помилок через Zod
+- Додав тип `State` і експортував його з `actions.ts`
+- Оновив `createInvoice` і `updateInvoice` — приймають `prevState: State`, використовують `safeParse()`
+- Підключив `useActionState` в `create-form.tsx` і `edit-form.tsx`
+- Додав відображення помилок під кожним полем форми
+- Додав `aria-describedby`, `aria-live`, `aria-atomic` для accessibility
+
+### Ключові концепції:
+- `eslint-plugin-jsx-a11y` — плагін що ловить accessibility помилки (alt текст, aria атрибути)
+- Server-side validation — безпечніша ніж client-side, одне джерело правди
+- `safeParse()` vs `parse()` — не кидає виключення, повертає `{ success, error }` або `{ success, data }`
+- `useActionState(action, initialState)` — React хук, повертає `[state, formAction]`
+- `prevState` — обов'язковий перший аргумент Server Action при використанні `useActionState`
+- `validatedFields.error.flatten().fieldErrors` — Zod метод що повертає помилки по полях
+- `aria-describedby` — зв'язує input з блоком помилки для screen readers
+- `aria-live="polite"` — screen reader оголошує зміни коли користувач не зайнятий
+- `aria-atomic="true"` — screen reader читає весь блок цілком при будь-якій зміні
+
+### Нотатки:
+- `'use client'` потрібен бо `useActionState` це React хук
+- `updateInvoice.bind(null, invoice.id)` + `useActionState` — правильний спосіб передати id
+- Помилки валідації повертаються без `throw` — просто `return { errors, message }`
+- `redirect` і `revalidatePath` залишаються поза `try/catch`
+
+### Скріншоти:
+![](image/image-20.png)
